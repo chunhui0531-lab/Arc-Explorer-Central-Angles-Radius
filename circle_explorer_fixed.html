@@ -1389,19 +1389,214 @@
       display: block;
       animation: fadeIn 0.3s;
     }
+
+    /* Discovery Section Styles */
+    .disc-section {
+      display: none;
+      border-top: 2px dashed var(--line);
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+
+    .disc-box {
+      background: #e0f2fe;
+      padding: 24px;
+      border-radius: 12px;
+      border: 2px solid #3b82f6;
+      margin-bottom: 24px;
+    }
+
+    .disc-title {
+      margin: 0;
+      color: #0369a1;
+      font-size: 28px;
+    }
+
+    .disc-desc {
+      margin: 8px 0 0;
+      font-size: 20px;
+    }
+
+    /* Mobile Polish */
+    @media (max-width: 600px) {
+      body {
+        font-size: 18px;
+        /* Reduce from 24px */
+      }
+
+      .gh-btn {
+        font-size: 14px;
+        padding: 4px 8px;
+      }
+
+      h2,
+      .sb-title {
+        font-size: 22px !important;
+      }
+
+      .qText,
+      .option label,
+      .insight p {
+        font-size: 18px;
+      }
+
+      .disc-title {
+        font-size: 22px;
+      }
+
+      .disc-desc {
+        font-size: 16px;
+      }
+
+      .stage-bar {
+        padding: 12px;
+      }
+
+      button {
+        font-size: 18px;
+      }
+
+      /* Adjust Stage 2 C Layout for mobile */
+      .c-split {
+        gap: 12px;
+      }
+
+      /* Force canvas scale down if needed */
+      canvas {
+        max-width: 100%;
+      }
+
+      .c-overlay {
+        width: 280px;
+        height: 280px;
+      }
+
+      .c-overlay canvas {}
+    }
+  </style>
+  <style>
+    /* DS-Core Injection */
+    :root {
+      --ds-bg: #f8fafc;
+      --ds-panel: #ffffff;
+      --ds-text: #1e293b;
+      --ds-muted: #64748b;
+      --ds-line: #e2e8f0;
+      --ds-accent: #3b82f6;
+      --ds-good: #10b981;
+      --ds-bad: #ef4444;
+      --ds-font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+      --ds-radius: 16px;
+      --ds-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      background-color: var(--ds-bg) !important;
+      color: var(--ds-text) !important;
+      font-family: var(--ds-font) !important;
+      line-height: normal !important;
+      padding-top: 80px !important;
+      margin: 0 !important;
+      display: block !important;
+      height: auto !important;
+    }
+
+    /* Global Header */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: var(--ds-panel);
+      border-bottom: 1px solid var(--ds-line);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    }
+
+    .topbar__brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ds-accent);
+      text-decoration: none;
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topbar__nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .topbar__link {
+      color: var(--ds-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .topbar__link:hover {
+      background: var(--ds-bg);
+      color: var(--ds-text);
+    }
+
+    .topbar__link.active {
+      color: var(--ds-accent);
+      background: #eff6ff;
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 0 12px;
+      }
+
+      .topbar__nav {
+        display: none;
+      }
+    }
+
+    /* Layout Overrides */
+    .wrap {
+      max-width: 1100px !important;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      /* Remove forced height if any */
+      min-height: calc(100vh - 80px);
+    }
+
+    .global-header {
+      display: none !important;
+    }
+
+    /* Hide old one just in case */
   </style>
 </head>
 
 <body>
-  <header class="global-header">
-    <div class="gh-left">
-      <a href="index.html" class="gh-btn">🏠 Home</a>
-    </div>
-    <div class="gh-center" id="gh-title">探究活動</div>
-    <div class="gh-right">
-      <a id="gh-back" class="gh-btn disabled">◀ Back</a>
-      <a id="gh-next" class="gh-btn disabled">Next ▶</a>
-      <button class="gh-btn" onclick="document.getElementById('gh-help-modal').classList.add('show')">?</button>
+  <header class="topbar">
+    <a href="index.html" class="topbar__brand">幾何探究實驗室</a>
+    <nav class="topbar__nav">
+      <a href="index.html" class="topbar__link">首頁</a>
+      <a href="circle_explorer_fixed.html" class="topbar__link active">圓形探究</a>
+      <a href="circle_adventure_0104.html" class="topbar__link">視覺實驗</a>
+      <a href="inscribed_angle_theore_working.html" class="topbar__link">圓周角證明</a>
+    </nav>
+    <div class="topbar__controls" style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+      <span id="gh-title"
+        style="margin-right:10px; font-weight:bold; color:var(--ds-muted); font-size:0.9rem;">探究活動</span>
+      <a id="gh-back" class="gh-btn disabled" style="font-size:14px; padding:4px 8px;">◀ Back</a>
+      <a id="gh-next" class="gh-btn disabled" style="font-size:14px; padding:4px 8px;">Next ▶</a>
+      <button class="gh-btn" onclick="document.getElementById('gh-help-modal').classList.add('show')"
+        style="font-size:14px; padding:4px 8px;">?</button>
     </div>
   </header>
 
@@ -2127,12 +2322,10 @@
         </section>
 
         <!-- Discovery Section (Hidden initially) -->
-        <section class="ev-section" id="sec-discovery"
-          style="display:none; border-top: 2px dashed var(--line); margin-top: 20px; padding-top: 20px;">
-          <div
-            style="background:#e0f2fe; padding:24px; border-radius:12px; border:2px solid #3b82f6; margin-bottom:24px;">
-            <h3 style="margin:0; color:#0369a1; font-size:28px;">🤔 最終挑戰：你的發現</h3>
-            <p style="margin:8px 0 0; font-size:20px;">完成以下兩題來驗證你的結論！</p>
+        <section class="ev-section disc-section" id="sec-discovery">
+          <div class="disc-box">
+            <h3 class="disc-title">🤔 最終挑戰：你的發現</h3>
+            <p class="disc-desc">完成以下兩題來驗證你的結論！</p>
           </div>
 
           <div class="question" data-q="4">
@@ -2141,7 +2334,7 @@
             <div class="option" data-correct="false"><input type="radio" name="d1" id="d1a"><label
                 for="d1a">圓心的位置、角度</label></div>
             <div class="option" data-correct="true"><input type="radio" name="d1" id="d1b"><label
-                for="d1b">半徑的長度、角度</label></div>
+                for="d1b">半徑的長度、圓心角的角度</label></div>
             <div class="option" data-correct="false"><input type="radio" name="d1" id="d1c"><label
                 for="d1c">圓的顏色、半徑</label></div>
           </div>
@@ -2173,10 +2366,17 @@
             <div class="insight-step" id="is3">
               <h4>3. 最終歸納</h4>
               <p>將圓周長 (2πr) 乘上 角度比例 (θ/360°)，就是弧長！</p>
+              <br>
+              <p
+                style="background:#e0f2fe; padding:12px; border-radius:8px; border-left:4px solid #3b82f6; font-size: 0.9em; line-height:1.6;">
+                在前面的操作中，我們已經透過實際拖曳與觀察發現：<br>
+                <strong>當圓心角固定時，不論半徑如何改變，弧的度數始終相同。</strong><br>
+                公式，不是用來告訴你結果，而是用來驗證你剛剛親眼看到的現象是否一致。
+              </p>
               <div class="formula">弧長 ＝ 2πr × (θ / 360°)</div>
-              <a href="index.html" class="pri"
-                style="display:inline-block; text-align:center; text-decoration:none; margin-top:12px; width:100%">🎉
-                完成探究，回首頁</a>
+              <a href="inscribed_angle_theore_working.html" class="pri"
+                style="display:inline-block; text-align:center; text-decoration:none; margin-top:12px; width:100%">
+                前往階段 3：分類證明 ▶</a>
             </div>
           </div>
         </div>
@@ -3726,7 +3926,7 @@
           title.textContent = "Stage 2: 觀察";
           back.href = "?stage=1.5";
           back.onclick = (e) => { e.preventDefault(); goS(1.5); };
-          next.href = "index.html";
+          next.href = "inscribed_angle_theore_working.html";
         }
       }
 
