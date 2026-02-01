@@ -1799,7 +1799,7 @@
     <div class="stage" id="s15">
       <div class="stage-bar">
         <div class="sb-info">
-          <h2 class="sb-title">Stage 1.5: 位置與弧長</h2>
+          <h2 class="sb-title">Stage 2: 位置與弧長</h2>
           <p class="sb-goal">目標：觀察弧的位置是否影響弧長</p>
         </div>
         <div class="sb-ctrl">
@@ -1853,11 +1853,11 @@
               </div>
               <div class="obsQ">
                 <div class="qTitle" style="display:flex;align-items:center;flex-wrap:wrap">
-                  問題 3：
+                  問題 3：觀察這三個弧，雖然在圓周上的位置不同，但它們張開的程度（即
                   <input type="text" id="obs3Input"
                     style="width:120px;margin:0 8px;padding:4px;font-size:22px;border:2px solid #cbd5e1;border-radius:6px;text-align:center"
                     placeholder="?">
-                  相同
+                  )皆相同。
                 </div>
                 <div class="q-hint" id="hint3"></div>
               </div>
@@ -2467,7 +2467,7 @@
         if (b) {
           if (stage === 0) b.textContent = '階段 0：前測';
           else if (stage === 1) b.textContent = '階段 1：不同半徑';
-          else if (stage === 1.5) b.textContent = '階段 1.5：不同位置';
+          else if (stage === 1.5) b.textContent = '階段 2：不同位置';
           else if (stage === 2) b.textContent = '階段 2：結果分析';
         }
       }
@@ -2490,7 +2490,7 @@
       <div class="tstep"><div class="num">6</div><div class="txt"><strong>對齊並測量</strong><br>將兩個測量臂對準彩色弧的兩端，讀取角度後點擊「記錄測量」</div></div>
     `;
         } else if (s === 1.5) {
-          title.innerHTML = '📖 階段 1.5 操作教學';
+          title.innerHTML = '📖 階段 2 操作教學';
           html = `
       <div class="tstep"><div class="num">1</div><div class="txt"><strong>觀察三個弧</strong><br>畫面中有三個不同顏色的弧，它們的圓心角都是 60°</div></div>
       <div class="tstep"><div class="num">2</div><div class="txt"><strong>拖曳移動弧</strong><br>點擊並拖曳任意一個彩色弧，可以移動它到不同位置</div></div>
